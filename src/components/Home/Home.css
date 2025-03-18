@@ -1,0 +1,59 @@
+/* src/pages/Home.css */
+
+.home-container {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .hero {
+    background-color: rgb(155, 207, 199);
+    /* Sfond me ngjyrë të butë */
+    color: black;  /* Teksti në ngjyrë të errët për kontrast */
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;  /* Ky rregull bën që teksti dhe imazhi të jenë në skajet e kundërta */
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+  }
+  
+  .hero .hero-content {
+    max-width: 50%; 
+    color: rgb(6, 95, 150); /* Teksti nuk do të zërë më shumë se 50% të hapësirës */
+  }
+  
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: rgb(6, 145, 150);
+  }
+  
+  .cta-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-btn:hover {
+    background-color: #218838;
+  }
+  
+  .hero img {
+    width: 40%;  /* Imazhi do të mbushë 50% të hapësirës */
+    height: auto;
+    object-fit: cover; /* Kjo e bën imazhin të mbulojë hapësirën pa deformuar raportin e tij të aspektit */
+  }
+  
