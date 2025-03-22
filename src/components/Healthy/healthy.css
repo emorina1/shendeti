@@ -1,0 +1,64 @@
+.healthy-section {
+    background: linear-gradient(to right, #0cbaba, rgb(155, 207, 199));
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .healthy-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .healthy-subtitle {
+    font-size: 16px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+  }
+  
+  .healthy-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .healthy-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+  }
+  
+  .healthy-card img {
+    width: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .healthy-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .healthy-card p {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  
+  /* Karta e mesme (Emergency) është më e spikatur */
+  .highlighted {
+    background: white;
+    color: black;
+    transform: scale(1.1);
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  }
+  
+  .healthy-card:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  

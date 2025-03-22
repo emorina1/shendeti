@@ -26,7 +26,7 @@ const Navbar = () => {
       </div>
 
       <button className="desktopMenuBtn" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
-        Contact Me
+        Log in
       </button>
 
       <button className="mobMenu" onClick={() => setShowMenu(!showMenu)}>

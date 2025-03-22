@@ -1,0 +1,141 @@
+.about-section {
+    padding: 50px;
+    background-color: #f4f8ff;
+  }
+  
+  /* Stili për kutitë (cards) */
+  .info-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    min-height: 200px;
+  }
+  
+  .light-blue {
+    background-color:  rgb(132, 209, 198);
+  }
+  
+  .dark-blue {
+    background-color:  rgb(17, 182, 157);
+  }
+  
+  .card-icon {
+    width: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .phone-number {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+  .card-button {
+    background-color: white;
+    color: #0056b3;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .card-button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Seksioni About Us me foto në të majtë dhe tekst në të djathtë */
+  .about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 50px 0;
+  }
+  
+  .about-image {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .about-image img {
+    padding-left: 30px;
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .about-content {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+  }
+  
+  .about-tag {
+    color: #218838;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .about-content h2 {
+    color: #1a1a1a;
+    font-size: 28px;
+    margin: 10px 0;
+  }
+  
+  .about-content p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .about-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .about-content li {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .read-more {
+    margin-top: 15px;
+    background-color: #218838;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .read-more:hover {
+    background-color: #0056b3;
+  }
+  
