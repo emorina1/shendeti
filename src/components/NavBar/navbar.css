@@ -1,0 +1,102 @@
+.navbar {
+    height: 5rem;
+    width: 100vw;
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    left: 0; 
+    z-index: 3;
+
+}
+
+.photo {
+    object-fit: cover;
+    height: 12rem;
+    width: 14rem;
+}
+
+.desktopMenuListItem {
+    margin: 1rem;
+    cursor: pointer;
+    color: rgb(134, 127, 127);
+}
+
+.desktopMenuListItem:hover {
+    color: rgb(243, 0, 0);
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid red;
+}
+
+.desktopMenuBtn {
+    background-color:rgb(155, 207, 199);; /* Ngjyrë blu e çelët me transparencë */
+    color: white;
+   /* Rrumbullakimi më i madh */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2rem; /* Përdor më shumë padding */
+    font-weight: bold; /* Teksti i theksuar */
+    text-transform: uppercase; /* Të gjitha shkronjat e mëdha */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Kalim i qetë për ngjyrën dhe madhësinë */
+}
+
+.desktopMenuBtn:hover {
+    background-color: rgba(0, 153, 204, 1); /* Ngjyrë më e errët gjatë kalimit */
+    transform: scale(1.05); /* Rritja e butonit gjatë kalimit */
+}
+
+.desktopMenuImg {
+    object-fit: cover;
+    height: 1rem;
+    width: 1rem;
+    margin: 1rem;
+}
+
+.active {
+    color: rgb(150, 202, 131);
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid rgb(164, 197, 154);
+}
+
+.mobMenu {
+    display: none;
+    object-fit: cover;
+    height: 1.8rem;
+}
+
+.navMenu {
+    position: absolute;
+    top: 4rem;
+    right: 2rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    height: fit-content;
+    min-height: 15rem;
+    background: rgba(255, 182, 193, 0.5);
+    border-radius: 1rem;
+}
+
+.listItem {
+    color: white;
+    padding: 0.5rem 3rem;
+    margin: 0.25rem;
+    background: linear-gradient(147deg, #cfc6c6 0%, #eae8e8 100%);
+}
+
+@media screen and (max-width: 720px) {
+    .mobMenu {
+        display: flex;
+    }
+    .desktopMenu {
+        display: none;
+    }
+    .desktopMenuBtn {
+        display: none;
+    }
+}
