@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -19,7 +20,9 @@
     "react-router-dom": "^7.3.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.3",
+    "react-slick": "^0.30.3",
     "sequelize": "^6.37.6",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

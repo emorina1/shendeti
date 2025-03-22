@@ -1,16 +1,20 @@
 import Home from './components/Home/Home';
-import Navbar from './components/NavBar/NavBar';
 import AboutUs from './components/About/about';
 import Healthy from './components/Healthy/healthy';
+import Services from './components/Services/services';
+import Contact from './components/Contact/contact';
+import Footer from './components/Footer/footer';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <Home/>
-      <Navbar/>
       <AboutUs/>
       <Healthy/>
+      <Services/>
+      <Contact/>
+      <Footer/>
     </div>
   );
 }
