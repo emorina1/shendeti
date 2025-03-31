@@ -3,10 +3,9 @@ import './contact.css';
 
 const Contact = () => {
   return (
-    <div className="contact-section">
-      {/* LOKACIONI */}
+
+       <div id="contact" className="contact-section">
       <div className="contact-location">
-      
         <iframe
           title="Google Maps"
           className="location-map"
@@ -16,7 +15,6 @@ const Contact = () => {
         ></iframe>
       </div>
 
-      {/* FORMA E KONTAKTIT */}
       <div className="contact-container">
         <h2>Contact Us</h2>
         <form className="contact-form">

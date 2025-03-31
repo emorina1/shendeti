@@ -4,7 +4,7 @@ import aboutImage from '../../imgs/photo.png'; // Shto një foto në projektin t
 
 const AboutUs = () => {
   return (
-    <div className="about-section">
+<div id="about" className="about-section">
       {/* Seksioni i kutive (cards) */}
       <div className="info-cards">
         <div className="card light-blue">

@@ -4,7 +4,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './services.css';
 
-// 📌 Importimi i fotove nga src/assets
 import Doc1 from '../../imgs/Doc1.png';
 import Doc2 from '../../imgs/Doc2.png';
 import Doc3 from '../../imgs/Doc3.png';
@@ -35,7 +34,8 @@ const Services = () => {
   };
 
   return (
-    <div className="services-section">
+    <div id="services" className="services-section">
+
       <h2 className="services-title">Our Expert Doctors</h2>
       <Slider {...settings} className="doctor-slider">
         {doctors.map((doctor) => (

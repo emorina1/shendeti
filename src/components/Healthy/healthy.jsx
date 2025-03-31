@@ -3,7 +3,8 @@ import './healthy.css';
 
 const Healthy = () => {
   return (
-    <div className="healthy-section">
+    <div id="healthy" className="healthy-section">
+  
       <h2 className="healthy-title">Easily Book Your Doctor</h2>
       <p className="healthy-subtitle">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad molestiae ut.

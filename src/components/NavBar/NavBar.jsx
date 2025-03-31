@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import "./navbar.css";
 import { Link } from "react-scroll";
+import { useNavigate } from "react-router-dom";
+import "./navbar.css";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate(); // Përdor për të naviguar në faqen e login
 
   return (
     <nav className="navbar">
       <div className="desktopMenu">
-        <Link activeClass="active" to="home" spy={true} smooth={true} offset={-100} duration={500} className="desktopMenuListItem">
+        <Link activeClass="active" to="home" spy={true} smooth={true} offset={-50} duration={500} className="desktopMenuListItem">
           Home
         </Link>
         <Link activeClass="active" to="about" spy={true} smooth={true} offset={-50} duration={500} className="desktopMenuListItem">
@@ -25,7 +27,8 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <button className="desktopMenuBtn" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
+      {/* Kur klikon "Log in", shkon në faqen e login */}
+      <button className="desktopMenuBtn" onClick={() => navigate("/login")}>
         Log in
       </button>
 
@@ -34,7 +37,7 @@ const Navbar = () => {
       </button>
 
       <div className="navMenu" style={{ display: showMenu ? "flex" : "none" }}>
-        <Link activeClass="active" to="home" spy={true} smooth={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>
+        <Link activeClass="active" to="home" spy={true} smooth={true} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>
           Home
         </Link>
         <Link activeClass="active" to="about" spy={true} smooth={true} offset={-50} duration={500} className="listItem" onClick={() => setShowMenu(false)}>
