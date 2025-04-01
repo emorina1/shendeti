@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import './contact.css';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  return (
+  const form = useRef();
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
-       <div id="contact" className="contact-section">
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage('');
+
+    emailjs
+      .sendForm('service_swlub2k', 'template_vtiy4zj', form.current, '30NTbrPtuwxryuN2G')
+      .then(
+        (result) => {
+          console.log('Email sent successfully:', result.text);
+          setMessage('SUCCESS! Your message has been sent.');
+          setLoading(false);
+          form.current.reset();
+        },
+        (error) => {
+          console.error('Email sending failed:', error.text);
+          setMessage('FAILED... Please try again.');
+          setLoading(false);
+        }
+      );
+  };
+
+  return (
+    <div id="contact" className="contact-section">
       <div className="contact-location">
         <iframe
           title="Google Maps"
@@ -17,12 +43,15 @@ const Contact = () => {
 
       <div className="contact-container">
         <h2>Contact Us</h2>
-        <form className="contact-form">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
+        <form ref={form} onSubmit={sendEmail} className="contact-form">
+          <input type="text" name="user_name" placeholder="Your Name" required />
+          <input type="email" name="user_email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Sending...' : 'Send Message'}
+          </button>
         </form>
+        {message && <p>{message}</p>}
       </div>
     </div>
   );
