@@ -8,6 +8,8 @@ import Services from './components/Services/services';
 import Contact from './components/Contact/contact';
 import Footer from './components/Footer/footer';
 import Navbar from './components/NavBar/NavBar';
+import Signup from './components/LogIn/Signup.jsx';
+
 import Login from './components/LogIn/login.jsx'; // Shto komponentin Login
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
           </>
         } />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </Router>
   );

@@ -1,4 +1,4 @@
-const sequelize = require("./backend/config"); // Sigurohu që rruga është e saktë
+const sequelize = require("./backend/config/config"); // Sigurohu që rruga është e saktë
 const User = require("./backend/Models/User/User");
 
 async function testModel() {

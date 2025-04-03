@@ -1,99 +1,54 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import logo from '../../imgs/logo.jpg'; // Adjust the path based on your folder structure
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-import './Login.css';
-
-function Login() {
-  const [isSignup, setIsSignup] = useState(false); // Kontrollo nëse është në signup
+const Login = () => {
   const [values, setValues] = useState({
-    username: '',
-    password: '',
-    confirmPassword: ''
+    email: "",
+    password: "",
   });
 
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handleInput = (event) => {
-    setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
+    setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    if (isSignup && values.password !== values.confirmPassword) {
-      console.log('Passwords do not match');
-      return;
-    }
-
-    axios.defaults.withCredentials = true;
-    const endpoint = isSignup ? 'http://localhost:8080/signup' : 'http://localhost:8080/loginform';
-    axios.post(endpoint, values)
-      .then(res => {
-        if (res.data.success) {
-          navigate('/dashboard');
+    axios
+      .post("http://localhost:8081/login", values)
+      .then((res) => {
+        if (res.data.message === "Success") {
+          navigate("/dashboard");
         } else {
-          console.log(res.data.message);
+          setError("Invalid credentials");
         }
       })
-      .catch(err => console.log(err));
+      .catch(() => setError("Something went wrong"));
   };
 
   return (
-    <div className="login-container">
-      <div className="login-left">
-        <div className="welcome-text">
-          <h1>{isSignup ? 'Join LifeLine Hospital' : 'Welcome Back'}</h1>
-          <p>{isSignup ? 'Create an account to get started' : 'Please log in to continue'}</p>
-          <button className="signup-btn" onClick={() => setIsSignup(!isSignup)}>
-            {isSignup ? 'Back to Login' : 'Need an account? Sign Up'}
-          </button>
-        </div>
-      </div>
-      <div className="login-right">
-        <div className="login-box">
-        <img src={logo} alt="Hospital Logo" className="hospital-logo" />
-
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input
-                type="text"
-                name='username'
-                placeholder="Enter Username"
-                onChange={handleInput}
-                value={values.username}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                name='password'
-                placeholder="Enter Password"
-                onChange={handleInput}
-                value={values.password}
-              />
-            </div>
-            {isSignup && (
-              <div className="form-group">
-                <input
-                  type="password"
-                  name='confirmPassword'
-                  placeholder="Confirm Password"
-                  onChange={handleInput}
-                  value={values.confirmPassword}
-                />
-              </div>
-            )}
-            <div className="form-actions">
-              {!isSignup && <Link to="/reset-password" className="reset-password-btn">Reset Password</Link>}
-              <button type="submit" className="login-btn">{isSignup ? 'Sign Up' : 'Login'}</button>
-            </div>
-          </form>
-        </div>
+    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
+      <div className="bg-white p-3 rounded w-25">
+        <h2>Sign In</h2>
+        {error && <p className="text-danger">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="email"><strong>Email</strong></label>
+            <input type="email" name="email" onChange={handleInput} className="form-control" />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password"><strong>Password</strong></label>
+            <input type="password" name="password" onChange={handleInput} className="form-control" />
+          </div>
+          <button type="submit" className="btn btn-success w-100">Log in</button>
+          <Link to="/signup" className="btn btn-light w-100 mt-2">Create Account</Link>
+        </form>
       </div>
     </div>
   );
-}
+};
 
 export default Login;
