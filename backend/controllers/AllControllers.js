@@ -1,8 +1,8 @@
 
-const LoginController = require('./Login/LoginController');
+// const LoginController = require('./Login/LoginController');
 
 
-  const defineRoutes = (app) => {
-    app.post('/loginform',                  LoginController.login);
-  };
-    module.exports = defineRoutes;
+//   const defineRoutes = (app) => {
+//     app.post('/loginform',                  LoginController.login);
+//   };
+//     module.exports = defineRoutes;
