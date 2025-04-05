@@ -10,6 +10,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
+
 // Lidhja me databazën
 sequelize.sync({ alter: true }) // ose { force: true } por kujdes se fshin të dhënat!
   .then(() => console.log("✅ Database synced"))
@@ -57,6 +65,9 @@ app.post("/login", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
+
+
+app.use(cors(corsOptions));
 
     const token = jwt.sign(
       { uId: user.id, username: user.name },

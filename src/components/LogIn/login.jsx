@@ -23,7 +23,7 @@ const Login = () => {
       .post("http://localhost:8081/login", values)
       .then((res) => {
         if (res.data.message === "Success") {
-          navigate("/dashboard");
+          navigate("../Dashboard");
         } else {
           setError("Invalid credentials");
         }

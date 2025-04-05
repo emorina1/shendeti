@@ -9,8 +9,19 @@ import Contact from './components/Contact/contact';
 import Footer from './components/Footer/footer';
 import Navbar from './components/NavBar/NavBar';
 import Signup from './components/LogIn/Signup.jsx';
+import Dashboard from './components/Dashboard/dashboard.jsx';
 
 import Login from './components/LogIn/login.jsx'; // Shto komponentin Login
+
+
+
+import Medicine from './components/Dashboard/Medicine/medicine.jsx';
+import Profile from './components/Dashboard/Profile/profile.jsx';
+import Rooms from './components/Dashboard/Room/rooms.jsx';
+import Patients from './components/Dashboard/Patient/patients.jsx';
+
+
+
 
 function App() {
   return (
@@ -29,6 +40,14 @@ function App() {
         } />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+    {/* Optional: Rrjete direkte per seksione */}
+        <Route path="/medicine" element={<Medicine />} />
+        <Route path="/patients" element={<Patients />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/rooms" element={<Rooms />} />
+
       </Routes>
     </Router>
   );
