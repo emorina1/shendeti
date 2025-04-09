@@ -3,8 +3,9 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const sequelize = require("./config/config");
+const { sequelize, mongoose }= require("./config/config");
 const User = require("./Models/User/User");
+const Multer =require ("multer");
 
 const app = express();
 app.use(cors());
