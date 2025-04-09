@@ -6,6 +6,7 @@ require("dotenv").config();
 const { sequelize, mongoose }= require("./config/config");
 const User = require("./Models/User/User");
 const Multer =require ("multer");
+const router = express.Router();
 
 const app = express();
 app.use(cors());
@@ -17,7 +18,24 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
+router.get('/verifylogin', (req, res) => {
+  // Pasi të jetë autentikuar përdoruesi, mund të merrni informacionin nga sesi ose JWT
+  const userEmail = req.user.email; // Supozojmë që email-i është ruajtur në sesi ose JWT
 
+  if (userEmail === 'elsamorina@gmail.com') {
+    res.json({
+      valid: true,
+      email: userEmail,
+      role: 'admin' // Dërgohet roli 'admin' për përdoruesin me këtë email
+    });
+  } else {
+    res.json({
+      valid: true,
+      email: userEmail,
+      role: 'user' // Përdoruesit e tjerë kanë rol 'user'
+    });
+  }
+});
 
 // Lidhja me databazën
 sequelize.sync({ alter: true }) // ose { force: true } por kujdes se fshin të dhënat!

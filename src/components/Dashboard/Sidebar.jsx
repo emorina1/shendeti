@@ -1,70 +1,94 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { FaUser, FaCalendarCheck, FaPills, FaInfoCircle, FaHeartbeat, FaUserMd, FaStethoscope, FaNotesMedical, FaHistory, FaClipboardList, FaSignOutAlt } from 'react-icons/fa';
 
 
-export default function Sidebar() {
-  const [email, setEmail] = useState('');
+const Sidebar = () => {
+  const [role, setRole] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8080', { withCredentials: true })
+    // Kërko për rolin e përdoruesit nga serveri
+    axios.get('http://localhost:8080/role', { withCredentials: true })
       .then(res => {
         if (res.data.valid) {
-          setEmail(res.data.email);
+          setRole(res.data.role);
         } else {
           navigate('/login');
         }
       })
-      .catch(() => navigate('/login'));
-  }, [navigate]);
-
-  const isAdmin = email === 'elsamorina@gmail.com';
+      .catch(err => navigate('/login'));
+  }, []);
 
   const handleLogout = () => {
     axios.get('http://localhost:8080/logout')
-      .then(() => navigate('/login'))
-      .catch(err => console.log(err));
+      .then(() => {
+        navigate('/login');
+      })
+      .catch(err => console.error(err));
   };
 
-  const goTo = (path) => navigate(path);
-
   return (
-    <div className="sidebar bg-dark text-white p-3" style={{ width: '250px', minHeight: '100vh' }}>
-      <h4 className="mb-4">Health Dashboard</h4>
-      <ul className="nav flex-column">
-        {isAdmin ? (
-          <>
-            <li className="nav-item" onClick={() => goTo('/medicine')}>
-              <span className="nav-link text-white"><i className="fa fa-medkit"></i> Medicine</span>
-            </li>
-            <li className="nav-item" onClick={() => goTo('/patients')}>
-              <span className="nav-link text-white"><i className="fa fa-user-injured"></i> Patients</span>
-            </li>
-            <li className="nav-item" onClick={() => goTo('/profile')}>
-              <span className="nav-link text-white"><i className="fa fa-user"></i> Profile</span>
-            </li>
-            <li className="nav-item" onClick={() => goTo('/rooms')}>
-              <span className="nav-link text-white"><i className="fa fa-door-open"></i> Rooms</span>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className="nav-item" onClick={() => goTo('/myprofile')}>
-              <span className="nav-link text-white"><i className="fa fa-user"></i> My Profile</span>
-            </li>
-            <li className="nav-item" onClick={() => goTo('/appointments')}>
-              <span className="nav-link text-white"><i className="fa fa-calendar-check"></i> Appointments</span>
-            </li>
-            <li className="nav-item" onClick={() => goTo('/services')}>
-              <span className="nav-link text-white"><i className="fa fa-stethoscope"></i> Services</span>
-            </li>
-          </>
+    <div className="sidebar" style={{ width: '250px', height: '100vh', backgroundColor: '#f4f4f4', paddingTop: '20px' }}>
+      <div className="sidebar-header" style={{ padding: '10px', backgroundColor: '#007bff', color: 'white' }}>
+        <h4>Shëndetiim</h4>
+      </div>
+
+      <ul className="nav flex-column" style={{ listStyleType: 'none', padding: '0' }}>
+        <li className="nav-item">
+          <a href="/dashboard" className="nav-link" style={{ padding: '10px', textDecoration: 'none', color: 'black' }}>
+            <FaHeartbeat className="me-2" />
+            Dashboard
+          </a>
+        </li>
+        
+        <li className="nav-item">
+          <a href="/patients" className="nav-link" style={{ padding: '10px', textDecoration: 'none', color: 'black' }}>
+            <FaUserMd className="me-2" />
+            Pacientët
+          </a>
+        </li>
+
+        {role === 'Admin' && (
+          <li className="nav-item">
+            <a href="/manageDoctors" className="nav-link" style={{ padding: '10px', textDecoration: 'none', color: 'black' }}>
+              <FaStethoscope className="me-2" />
+              Menaxho Mjekët
+            </a>
+          </li>
         )}
-        <li className="nav-item mt-4">
-          <button onClick={handleLogout} className="btn btn-danger w-100">Logout</button>
+
+        <li className="nav-item">
+          <a href="/appointments" className="nav-link" style={{ padding: '10px', textDecoration: 'none', color: 'black' }}>
+            <FaNotesMedical className="me-2" />
+            Konsulta
+          </a>
+        </li>
+
+        <li className="nav-item">
+          <a href="/medicalHistory" className="nav-link" style={{ padding: '10px', textDecoration: 'none', color: 'black' }}>
+            <FaHistory className="me-2" />
+            Historiku Mjekësor
+          </a>
+        </li>
+
+        <li className="nav-item">
+          <a href="/testResults" className="nav-link" style={{ padding: '10px', textDecoration: 'none', color: 'black' }}>
+            <FaClipboardList className="me-2" />
+            Rezultatet e Testeve
+          </a>
+        </li>
+
+        <li className="nav-item">
+          <a href="/" onClick={handleLogout} className="nav-link" style={{ padding: '10px', textDecoration: 'none', color: 'black' }}>
+            <FaSignOutAlt className="me-2" />
+            Dil
+          </a>
         </li>
       </ul>
     </div>
   );
-}
+};
+
+export default Sidebar;
