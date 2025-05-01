@@ -27,13 +27,18 @@
 
 .home-container {
   perspective: 1000px;
-  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  background-image: url(/src/imgs/lo.png);
+  background-size: cover; /* Siguron që fotoja të mbulojë të gjithë hapësirën */
+  background-position: center center; /* Rregullon pozicionin që fotoja të jetë në qendër */
+  background-repeat: no-repeat; /* Parandalon përsëritjen e fotos */
+  
   padding: 60px 30px;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 .hero {
   display: flex;
@@ -56,7 +61,7 @@
 .hero-title {
   font-size: 2.8rem;
   font-weight: bold;
-  color: #00796b;
+  color: #327a71;
   margin-bottom: 20px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -75,20 +80,21 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .hero-image {
-  width: 600px;
-  height: 600px;
+  width: 500px; /* Pakoje rrethin pak më të vogël */
+  height: 500px;
   object-fit: cover;
   border-radius: 50%;
   border: 6px solid white;
+
   box-shadow:
     0 0 0 12px rgba(255, 255, 255, 0.8), /* rreth i bardhë i jashtëm */
-    0 0 30px 10px rgba(23, 225, 225, 0.3); /* efekt ngjyrë gradient si hijë */
+    0 0 30px 10px rgba(52, 98, 98, 0.3); /* efekt ngjyrë gradient si hijë */
   position: absolute;
-  top: 0;
+  top: -1;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;

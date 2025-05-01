@@ -1,64 +1,66 @@
 .healthy-section {
-    background: linear-gradient(to right, #0cbaba, rgb(155, 207, 199));
-    color: white;
-    text-align: center;
-    padding: 50px 20px;
-  }
-  
-  .healthy-title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .healthy-subtitle {
-    font-size: 16px;
-    margin-bottom: 30px;
-    opacity: 0.8;
-  }
-  
-  .healthy-cards {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  
-  .healthy-card {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    transition: 0.3s;
-  }
-  
-  .healthy-card img {
-    width: 50px;
-    margin-bottom: 10px;
-  }
-  
-  .healthy-card h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .healthy-card p {
-    font-size: 14px;
-    opacity: 0.9;
-  }
-  
-  /* Karta e mesme (Emergency) është më e spikatur */
-  .highlighted {
-    background: white;
-    color: black;
-    transform: scale(1.1);
-    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
-  }
-  
-  .healthy-card:hover {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
+  background: linear-gradient(to right, #0cbaba, rgb(155, 207, 199));
+  padding: 50px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.healthy-title {
+  font-size: 36px;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.healthy-subtitle {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.healthy-cards {
+  display: flex;
+  justify-content: center; /* Afron kartat në qendër */
+  gap: 15px; /* Ulet hapësira mes kartave */
+  flex-wrap: wrap;
+}
+
+.healthy-card {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin: 0 10px; /* Hapësirë mes kartave në të dy anët */
+}
+
+.healthy-card:hover {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+}
+
+.healthy-card h3 {
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+.healthy-card p {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.healthy-icon {
+  font-size: 50px;
+  color: #218838;
+}
+
+.healthy-card.highlighted {
+  background-color: #e0ffe0;
+}
+
+.healthy-card.highlighted .healthy-icon {
+  color: #ff5733;
+}
