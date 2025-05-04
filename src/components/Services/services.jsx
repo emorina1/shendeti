@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -21,6 +21,8 @@ const doctors = [
 ];
 
 const Services = () => {
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -35,11 +37,16 @@ const Services = () => {
 
   return (
     <div id="services" className="services-section">
-
       <h2 className="services-title">Our Expert Doctors</h2>
+
       <Slider {...settings} className="doctor-slider">
         {doctors.map((doctor) => (
-          <div className="doctor-card" key={doctor.id}>
+          <div
+            className="doctor-card"
+            key={doctor.id}
+            onClick={() => setSelectedDoctor(doctor)}
+            style={{ cursor: 'pointer' }}
+          >
             <img src={doctor.image} alt={doctor.name} className="doctor-image" />
             <h3 className="doctor-specialty">{doctor.specialty}</h3>
             <h2 className="doctor-name">{doctor.name}</h2>
@@ -52,6 +59,24 @@ const Services = () => {
           </div>
         ))}
       </Slider>
+
+      {selectedDoctor && (
+        <div className="doctor-detail">
+          <h3>About {selectedDoctor.name}</h3>
+          <div className="doctor-detail-content">
+            <img src={selectedDoctor.image} alt={selectedDoctor.name} className="doctor-detail-image" />
+            <div>
+              <h4>Specialty: {selectedDoctor.specialty}</h4>
+              <p>{selectedDoctor.description}</p>
+              <p>
+                {selectedDoctor.name} is a highly experienced {selectedDoctor.specialty.toLowerCase()} known for their excellent patient care
+                and expertise in the latest medical techniques. Schedule an appointment today to meet {selectedDoctor.name} in person!
+              </p>
+              <button onClick={() => setSelectedDoctor(null)} className="close-btn">Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
