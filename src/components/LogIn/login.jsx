@@ -1,55 +1,34 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./auth.css";
-
+import { useState } from "react";
 
 const Login = () => {
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
+  const [values, setValues] = useState({ email: "", password: "" });
 
-  const navigate = useNavigate();
-  const [error, setError] = useState("");
-
-  const handleInput = (event) => {
-    setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:8081/login", values)
-      .then((res) => {
-        if (res.data.message === "Success") {
-          navigate("../Dashboard");
-        } else {
-          setError("Invalid credentials");
-        }
-      })
-      .catch(() => setError("Something went wrong"));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Login data:", values);  // Log për të parë të dhënat që po dërgoni
+    try {
+      const res = await axios.post("http://localhost:8081/login", values, {
+        withCredentials: true,
+      });
+      alert("Login successful");
+      console.log("User:", res.data.user);
+    } catch (err) {
+      console.error("Login failed:", err.response?.data?.error || err.message);
+      alert("Login failed");
+    }
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
-      <div className="bg-white p-3 rounded w-25">
-        <h2>Sign In</h2>
-        {error && <p className="text-danger">{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email"><strong>Email</strong></label>
-            <input type="email" name="email" onChange={handleInput} className="form-control" />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password"><strong>Password</strong></label>
-            <input type="password" name="password" onChange={handleInput} className="form-control" />
-          </div>
-          <button type="submit" className="btn btn-success w-100">Log in</button>
-          <Link to="/signup" className="btn btn-light w-100 mt-2">Create Account</Link>
-        </form>
-      </div>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input name="email" onChange={handleChange} placeholder="Email" />
+      <input name="password" onChange={handleChange} type="password" placeholder="Password" />
+      <button type="submit">Login</button>
+    </form>
   );
 };
 

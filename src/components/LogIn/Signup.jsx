@@ -3,27 +3,33 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./auth.css";
 
-
 const Signup = () => {
   const [values, setValues] = useState({
     name: "",
     email: "",
     password: "",
   });
-
-  const navigate = useNavigate();
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleInput = (event) => {
-    setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  // Vendos bazën e URL-së
+  axios.defaults.baseURL = "http://localhost:8081";
+
+  const handleInput = (e) => {
+    setValues(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:8081/signup", values)
-      .then(() => navigate("/login"))
-      .catch(() => setError("Signup failed"));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      const res = await axios.post("/signup", values);
+      if (res.status === 201) {
+        navigate("/login");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Signup failed");
+    }
   };
 
   return (
@@ -33,20 +39,48 @@ const Signup = () => {
         {error && <p className="text-danger">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="name"><strong>Name</strong></label>
-            <input type="text" name="name" onChange={handleInput} className="form-control" />
+            <label><strong>Name</strong></label>
+            <input
+              type="text"
+              name="name"
+              value={values.name}
+              onChange={handleInput}
+              className="form-control"
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="email"><strong>Email</strong></label>
-            <input type="email" name="email" onChange={handleInput} className="form-control" />
+            <label><strong>Email</strong></label>
+            <input
+              type="email"
+              name="email"
+              value={values.email}
+              onChange={handleInput}
+              className="form-control"
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="password"><strong>Password</strong></label>
-            <input type="password" name="password" onChange={handleInput} className="form-control" />
+            <label><strong>Password</strong></label>
+            <input
+              type="password"
+              name="password"
+              value={values.password}
+              onChange={handleInput}
+              className="form-control"
+              minLength={6}
+              required
+            />
           </div>
-          <button type="submit" className="btn btn-success w-100">Sign Up</button>
-          <Link to="/login" className="btn btn-light w-100 mt-2">Login</Link>
+          <button type="submit" className="btn btn-success w-100">
+            Sign Up
+          </button>
         </form>
+        <div className="text-center mt-3">
+          <small>
+            Already have an account? <Link to="/login">Log in</Link>
+          </small>
+        </div>
       </div>
     </div>
   );
