@@ -124,25 +124,56 @@
     color: #218838;
   }
   
-  /* Responsiveness */
-  @media (max-width: 1024px) {
-    .doctor-slider {
-      width: 90%;
-    }
+.doctor-slider {
+  width: 80%;
+  margin: auto;
+}
+
+@media (max-width: 1024px) {
+  .doctor-slider {
+    width: 90%;
   }
-  
-  @media (max-width: 768px) {
-    .doctor-slider {
-      width: 95%;
-    }
-  
-    .doctor-card {
-      padding: 15px;
-    }
-  
-    .doctor-image {
-      width: 120px;
-      height: 120px;
-    }
+}
+
+@media (max-width: 768px) {
+  .doctor-slider {
+    width: 95%;
   }
+}
+
+/* Responsiviteti për kartat e doktorëve */
+.doctor-card {
+  padding: 20px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .doctor-card {
+    padding: 15px;
+  }
+
+  .doctor-image {
+    width: 120px;
+    height: 120px;
+  }
+}/* Responsiviteti për Shërbimet */
+@media screen and (max-width: 1024px) {
+  .services-section {
+    padding: 40px 15px;
+  }
+
+  .services-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .services-section {
+    padding: 30px 10px;
+  }
+
+  .services-title {
+    font-size: 1.6rem;
+  }
+}
   

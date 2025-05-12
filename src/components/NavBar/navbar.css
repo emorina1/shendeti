@@ -1,6 +1,6 @@
 .navbar {
     height: 5rem;
-    width: 100vw;
+    width: 100%;
     max-width: 75rem;
     margin: 0 auto;
     padding: 1rem 2rem;
@@ -8,10 +8,11 @@
     align-items: center;
     justify-content: space-between;
     position: sticky;
-    left: 0; 
-    z-index: 3;
-    
-
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .photo {
@@ -23,81 +24,131 @@
 .desktopMenuListItem {
     margin: 1rem;
     cursor: pointer;
-    color: rgb(134, 127, 127);
+    color: #868080;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 .desktopMenuListItem:hover {
-    color: rgb(243, 0, 0);
+    color: #f30000;
     padding-bottom: 0.5rem;
     border-bottom: 3px solid red;
 }
 
 .desktopMenuBtn {
-    background-color:rgb(155, 207, 199);; /* Ngjyrë blu e çelët me transparencë */
+    background-color: #9bcfc7;
     color: white;
-   /* Rrumbullakimi më i madh */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.8rem 2rem; /* Përdor më shumë padding */
-    font-weight: bold; /* Teksti i theksuar */
-    text-transform: uppercase; /* Të gjitha shkronjat e mëdha */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Kalim i qetë për ngjyrën dhe madhësinë */
+    padding: 0.8rem 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .desktopMenuBtn:hover {
-    background-color: rgba(0, 153, 204, 1); /* Ngjyrë më e errët gjatë kalimit */
-    transform: scale(1.05); /* Rritja e butonit gjatë kalimit */
+    background-color: #0099cc;
+    transform: scale(1.05);
 }
 
 .desktopMenuImg {
     object-fit: cover;
     height: 1rem;
     width: 1rem;
-    margin: 1rem;
+    margin-left: 0.5rem;
 }
 
 .active {
-    color: rgb(150, 202, 131);
+    color: #96ca83;
     padding-bottom: 0.5rem;
-    border-bottom: 3px solid rgb(164, 197, 154);
+    border-bottom: 3px solid #a4c59a;
 }
 
 .mobMenu {
     display: none;
     object-fit: cover;
     height: 1.8rem;
+    cursor: pointer;
 }
 
 .navMenu {
     position: absolute;
-    top: 4rem;
+    top: 5rem;
     right: 2rem;
-    z-index: 2;
+    z-index: 999;
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
-    height: fit-content;
-    min-height: 15rem;
-    background: rgba(255, 182, 193, 0.5);
+    padding: 1rem;
+    background: rgba(255, 182, 193, 0.9);
     border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .listItem {
-    color: white;
-    padding: 0.5rem 3rem;
-    margin: 0.25rem;
+    color: #333;
+    padding: 0.5rem 2rem;
+    margin: 0.25rem 0;
     background: linear-gradient(147deg, #cfc6c6 0%, #eae8e8 100%);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.listItem:hover {
+    background: linear-gradient(147deg, #eae8e8 0%, #cfc6c6 100%);
 }
 
 @media screen and (max-width: 720px) {
-    .mobMenu {
-        display: flex;
-    }
-    .desktopMenu {
-        display: none;
-    }
-    .desktopMenuBtn {
-        display: none;
-    }
+  .mobMenu {
+    display: block;
+  }
+
+  .desktopMenu,
+  .desktopMenuBtn {
+    display: none;
+  }
+
+  .navMenu {
+    position: absolute;
+    top: 5rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    animation: slideDown 0.3s ease-in-out;
+  }
+
+  .navMenu .listItem {
+    color: #333;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #f5f5f5;
+    border-radius: 0.5rem;
+    transition: background 0.3s ease;
+  }
+
+  .navMenu .listItem:hover {
+    background-color: #e0e0e0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

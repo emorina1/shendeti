@@ -64,3 +64,14 @@
 .healthy-card.highlighted .healthy-icon {
   color: #ff5733;
 }
+@media screen and (max-width: 768px) {
+  .healthy-cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .healthy-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
