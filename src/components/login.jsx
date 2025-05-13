@@ -27,13 +27,20 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      {/* Left Image + Text */}
-      <div className="login-left">
-        <div className="overlay"></div>
-        <div className="text-content">
-       
-        </div>
-      </div>
+      {/* Left Video Background + Text */}
+<div className="login-left">
+  <video autoPlay muted loop className="bg-video">
+    <source src="https://v1.pinimg.com/videos/iht/expMp4/25/78/c2/2578c2ef7e39ae6963e9b90ea638c6f7_720w.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div className="overlay"></div>
+  <div className="text-content">
+    {/* <h2>Healthy Mind & Body</h2>
+    <p>Start your journey to wellness today.</p> */}
+  </div>
+</div>
+
+   
 
       {/* Right Form */}
       <div className="login-right">
