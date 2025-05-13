@@ -8,9 +8,11 @@ import Services from './components/Services/services';
 import Contact from './components/Contact/contact';
 import Footer from './components/Footer/footer';
 import Navbar from './components/NavBar/NavBar'; // Importoni Navbar-in
-import Signup from './components/LogIn/Signup.jsx';
+import Login from './components/login';
 
-import Login from './components/LogIn/login.jsx';
+
+
+
 
 
 function App() {
@@ -31,12 +33,11 @@ function App() {
           </>
         } />
         
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+   
         
         {/* Në dashboard, nuk shfaqet navbar-i */}
    
-      
+      <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
