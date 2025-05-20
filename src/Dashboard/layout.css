@@ -1,0 +1,115 @@
+/* ==== SIDEBAR ==== */
+.sidebar {
+  min-height: 100vh;
+  width: 250px;
+  background-color: #e6f7f4; /* Light medical green-blue */
+  padding: 1.5rem;
+  border-right: 1px solid #c8e6e0;
+  position: fixed;
+  top: 52px; /* Nën navbar */
+  left: 0;
+  z-index: 5;
+}
+
+.section-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #2e7d6b;
+  margin-bottom: 0.5rem;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  color: #155e63;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.menu-link .icon {
+  margin-right: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.menu-link:hover {
+  color: #0d3b42;
+  font-weight: 500;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #b72b2b;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: 0.2s;
+}
+
+.logout-button .icon {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.logout-button:hover {
+  color: #871d1d;
+}
+
+
+/* ==== NAVBAR (Topbar) ==== */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background-color: #3ec6b5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 250px; /* vend për sidebar-in */
+  padding-right: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.topbar-brand {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.topbar-brand span {
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-logout-btn {
+  background-color: #fff;
+  color: #3ec6b5;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.topbar-logout-btn:hover {
+  background-color: #d4f4f0;
+}
